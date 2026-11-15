@@ -7,30 +7,30 @@
     <title>مدار تك " مساحتك للتعلم " و التطور </title>
     <!-- ربط ملفات CSS خارجية -->
     <!-- Boot Strap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
     <!--  cssكود لربط صفحة  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- كود للايقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
 
     <!-- كود لايقونة علامة التبويب -->
-    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
 </head>
 
 <body>
     <div class="site-wrapper">
         <!-- اسم الموقع او الشعار شريط البحث و تسجيل الدخول او اتصل بنا -->
-        <header>
+        <header class="site-header">
             <!-- للقوائم الرئيسية لاقسام الموقغ -->
             <nav class="list" id="list">
                 <!-- logo -->
                 <a href="#home" class="navbar-logo">
-                    <img src="img/Artboard 1.png" alt="شعار مدار تك">
+                    <img src="assets/images/Artboard 1.png" alt="شعار مدار تك">
                 </a>
                 <!-- Navigation Links -->
-                <ul>
+                <ul id="site-navigation">
                     <li> <a href="#home">الرئيسية</a> </li>
                     <li> <a href="#about"> من نحن</a> </li>
                     <li> <a href="#Services"> خدمتنا</a></li>
@@ -43,32 +43,87 @@
                     احجز الآن</a>
 
                 <!-- Mobile Menu Button -->
-                <button type="button" class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false">
-                    <i class="fa-solid fa-bars"></i>
+                <button type="button" class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false"
+                    aria-controls="site-navigation">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </button>
 
             </nav>
         </header>
 
         <main>
-            <section class="content" id="home">
+            <section class="hero-slider" id="home" aria-roledescription="carousel" aria-label="مدار تك">
+                <div class="hero-slides">
+                    <article class="hero-slide is-active" role="group" aria-roledescription="slide"
+                        aria-label="1 من 3" aria-hidden="false">
+                        <img class="hero-slide-image" src="assets/images/bg1.jpg" alt="" aria-hidden="true">
+                        <div class="hero-copy">
+                            <h1 class="hero-title">
+                                <span>مساحتك للتعلّم</span>
+                                <span>التطور، وصناعة الفرص</span>
+                            </h1>
+                            <p class="hero-description">
+                                مدار تك مؤسسة تعليمية وتدريبية في خانيونس، نعمل على توفير بيئة تساعد الطالب والخريجين
+                                والشباب على تطوير مهاراتهم، واكتساب الخبرات العملية، والانطلاق نحو فرص جديدة.
+                            </p>
+                            <div class="hero-buttons">
+                                <a href="#contact" class="btn hero-btn-primary">تواصل معنا</a>
+                                <a href="#Services" class="btn hero-btn-secondary">اكتشف خدمتنا</a>
+                            </div>
+                        </div>
+                    </article>
 
-                <h1 class="hero-title1">مساحتك للتعلّم</h1>
-                <h1 class="hero-title2">التطور، وصناعة الفرص</h1>
+                    <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 من 3"
+                        aria-hidden="true" inert>
+                        <img class="hero-slide-image" src="assets/images/2ch.jpeg" alt="" aria-hidden="true"
+                            loading="lazy">
+                        <div class="hero-copy">
+                            <h2 class="hero-title">مساحات العمل المشتركة</h2>
+                            <p class="hero-description">
+                                بيئة مناسبة للطلاب والمستقلين وأصحاب المشاريع لإنجاز أعمالهم وتبادل الأفكار.
+                            </p>
+                            <div class="hero-buttons">
+                                <a href="#Services" class="btn hero-btn-primary">اكتشف خدمتنا</a>
+                                <a href="#contact" class="btn hero-btn-secondary">تواصل معنا</a>
+                            </div>
+                        </div>
+                    </article>
 
-                <p class="hero-title3">
-                    مدار تك مؤسسة تعليمية وتدريبية في خانيونس،
-                    نعمل على توفير بيئة تساعد الطالب والخريجين والشباب على
-                    تطوير
-                    مهاراتهم، واكتساب الخبرات العملية، واالنطالق نحو فرص جديدة
-                </p>
-
-                <!-- أزرار القسم الرئيسي -->
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn discover-btn">تواصل معنا</a>
-                    <a href="#Services" class="btn">اكتشف خدمتنا</a>
+                    <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 من 3"
+                        aria-hidden="true" inert>
+                        <img class="hero-slide-image" src="assets/images/3ch.jpeg" alt="" aria-hidden="true"
+                            loading="lazy">
+                        <div class="hero-copy">
+                            <h2 class="hero-title">القاعات التدريبية</h2>
+                            <p class="hero-description">
+                                قاعات مجهزة لاستضافة الدورات التدريبية والاجتماعات والفعاليات والأنشطة.
+                            </p>
+                            <div class="hero-buttons">
+                                <a href="#Programs" class="btn hero-btn-primary">البرامج التدريبية</a>
+                                <a href="#contact" class="btn hero-btn-secondary">تواصل معنا</a>
+                            </div>
+                        </div>
+                    </article>
                 </div>
 
+                <div class="hero-controls">
+                    <button class="hero-arrow hero-arrow-previous" type="button" aria-label="الشريحة السابقة">
+                        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                    </button>
+                    <div class="hero-pagination" role="group" aria-label="اختيار الشريحة">
+                        <button class="hero-dot is-active" type="button" aria-label="الشريحة 1"
+                            aria-current="true"></button>
+                        <button class="hero-dot" type="button" aria-label="الشريحة 2"
+                            aria-current="false"></button>
+                        <button class="hero-dot" type="button" aria-label="الشريحة 3"
+                            aria-current="false"></button>
+                    </div>
+                    <button class="hero-arrow hero-arrow-next" type="button" aria-label="الشريحة التالية">
+                        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                    </button>
+                </div>
             </section>
 
             <!-- معلومات عنا -->
@@ -119,7 +174,7 @@
                         <div class="col-md-6 col-lg-3 ">
 
                             <div class="card">
-                                <img class="card-img-top" src="img/1ch.jpeg" alt="التدريب والتطوير">
+                                <img class="card-img-top" src="assets/images/1ch.jpeg" alt="التدريب والتطوير">
                                 <div class="card-body">
                                     <h3 class="card-title">التدريب والتطوير</h3>
                                     <hr>
@@ -133,7 +188,7 @@
                         <!-- 2 -->
                         <div class="col-md-6 col-lg-3">
                             <div class="card">
-                                <img class="card-img-top" src="img/2ch.jpeg" alt="مساحات العمل المشتركة">
+                                <img class="card-img-top" src="assets/images/2ch.jpeg" alt="مساحات العمل المشتركة">
                                 <div class="card-body">
                                     <h3 class="card-title">مساحات العمل المشتركة</h3>
                                     <hr>
@@ -146,7 +201,7 @@
                         <!-- 3 -->
                         <div class="col-md-6 col-lg-3">
                             <div class="card">
-                                <img class="card-img-top" src="img/3ch.jpeg" alt="القاعات التدريبية">
+                                <img class="card-img-top" src="assets/images/3ch.jpeg" alt="القاعات التدريبية">
                                 <div class="card-body">
                                     <h3 class="card-title">القاعات التدريبية</h3>
                                     <hr>
@@ -159,7 +214,7 @@
                         <!-- 4 -->
                         <div class="col-md-6 col-lg-3">
                             <div class="card">
-                                <img class="card-img-top" src="img/4ch.jpeg" alt="الأنشطة التعليمية">
+                                <img class="card-img-top" src="assets/images/4ch.jpeg" alt="الأنشطة التعليمية">
                                 <div class="card-body">
                                     <h3 class="card-title">الأنشطة التعليمية</h3>
                                     <hr>
@@ -285,7 +340,7 @@
 
                         <!-- Image - Left Side -->
                         <div class="col-lg-6 contact-image-side">
-                            <img src="img/contact.jpeg" alt="تواصل مع مدار تك">
+                            <img src="assets/images/contact.jpeg" alt="تواصل مع مدار تك">
                         </div>
 
                         <!-- Form - Right Side -->
@@ -333,7 +388,7 @@
                         <!-- الشعار -->
                         <div class="footer-about">
                             <div class="footer-logo">
-                                <img src="img/Artboard 1.png" alt="Madar Tech Logo">
+                                <img src="assets/images/Artboard 1.png" alt="Madar Tech Logo">
                             </div>
                             <a href="#list" class="logo">
                                 <span>مدار</span>
@@ -390,11 +445,7 @@
 
     </div>
 
-    <!-- Boot Strap JS -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Boot Strap JS -->
-    <script src="js/script.js"></script>
+    <script src="assets/js/script.js"></script>
 
 </body>
 
