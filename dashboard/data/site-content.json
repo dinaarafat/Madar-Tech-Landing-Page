@@ -1,0 +1,190 @@
+{
+  "siteTitle": "مدار تك \" مساحتك للتعلم \" و التطور",
+  "brandLogo": "assets/images/Artboard 1.png",
+  "navigation": [
+    "الرئيسية",
+    "من نحن",
+    "خدمتنا",
+    "البرامج التدريبية",
+    "تواصل معنا"
+  ],
+  "heroSlides": [
+    {
+      "title": "مساحتك للتعلّم\nالتطور، وصناعة الفرص",
+      "description": "مدار تك مؤسسة تعليمية وتدريبية في خانيونس، نعمل على توفير بيئة تساعد الطالب والخريجين والشباب على تطوير مهاراتهم، واكتساب الخبرات العملية، والانطلاق نحو فرص جديدة.",
+      "image": "assets/images/bg1.jpg",
+      "primaryLabel": "تواصل معنا",
+      "primaryHref": "#contact",
+      "secondaryLabel": "اكتشف خدمتنا",
+      "secondaryHref": "#Services"
+    },
+    {
+      "title": "مساحات العمل المشتركة",
+      "description": "بيئة مناسبة للطلاب والمستقلين وأصحاب المشاريع لإنجاز أعمالهم وتبادل الأفكار.",
+      "image": "assets/images/2ch.jpeg",
+      "primaryLabel": "اكتشف خدمتنا",
+      "primaryHref": "#Services",
+      "secondaryLabel": "تواصل معنا",
+      "secondaryHref": "#contact"
+    },
+    {
+      "title": "القاعات التدريبية",
+      "description": "قاعات مجهزة لاستضافة الدورات التدريبية والاجتماعات والفعاليات والأنشطة.",
+      "image": "assets/images/3ch.jpeg",
+      "primaryLabel": "البرامج التدريبية",
+      "primaryHref": "#Programs",
+      "secondaryLabel": "تواصل معنا",
+      "secondaryHref": "#contact"
+    }
+  ],
+  "sections": [
+    {
+      "id": "about",
+      "type": "about",
+      "title": "نتعلم اليوم لنصنع فرص الغد",
+      "description": "مدار تك مؤسسة تعليمية وتدريبية تسعى إلى ربط المعرفة األكاديمية بالتطبيق العملي، من خالل تقديم برامج تدريبية وأنشطة تعليمية تساعد الشباب على تطوير قدراتهم ومواكبة متطلبات سوق العمل.",
+      "visionTitle": "الرؤية",
+      "vision": "أن نكون بيئة تعليمية وتدريبية تساهم في بناء جيل يمتلك المعرفة والمهارة والقدرة على صناعة الفرص.",
+      "missionTitle": "الرسالة",
+      "mission": "توفير فرص تعليم وتدريب نوعية تساعد األفراد على اكتشاف إمكاناتهم وتطوير مهاراتهم وتحويل المعرفة إلى تطبيق عملي"
+    },
+    {
+      "id": "services",
+      "type": "services",
+      "title": "خدماتنا",
+      "items": [
+        {
+          "title": "التدريب والتطوير",
+          "description": "برامج تدريبية متخصصة تهدف إلى تطوير المهارات التقنية والمهنية من خلال التعلم والتطبيق.",
+          "image": "assets/images/1ch.jpeg"
+        },
+        {
+          "title": "مساحات العمل المشتركة",
+          "description": "بيئة مناسبة للطلاب والمستقلين وأصحاب المشاريع لإنجاز أعمالهم وتبادل الأفكار.",
+          "image": "assets/images/2ch.jpeg"
+        },
+        {
+          "title": "القاعات التدريبية",
+          "description": "قاعات مجهزة لاستضافة الدورات التدريبية والاجتماعات والفعاليات والأنشطة.",
+          "image": "assets/images/3ch.jpeg"
+        },
+        {
+          "title": "الأنشطة التعليمية",
+          "description": "لقاءات ومبادرات تعليمية تساهم في نشر المعرفة وتبادل الخبرات.",
+          "image": "assets/images/4ch.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "programs",
+      "type": "programs",
+      "title": "البرامج التدريبية",
+      "subtitle": "طوّر مهاراتك وابدأ خطوتك القادمة.",
+      "items": [
+        {
+          "title": "Front-End Development",
+          "description": "تعلم أساسيات تطوير واجهات المواقع الإلكترونية.",
+          "buttonLabel": "اعرف المزيد"
+        },
+        {
+          "title": "Artificial Intelligence",
+          "description": "التعرف على أدوات الذكاء الاصطناعي وتطبيقاتها العملية.",
+          "buttonLabel": "اعرف المزيد"
+        },
+        {
+          "title": "Digital Skills",
+          "description": "تطوير المهارات الرقمية واستخدام الأدوات التقنية.",
+          "buttonLabel": "اعرف المزيد"
+        }
+      ]
+    },
+    {
+      "id": "why",
+      "type": "why",
+      "title": "لماذا مدار تك؟",
+      "items": [
+        {
+          "title": "بيئة تعليمية محفزة",
+          "icon": "fa-solid fa-graduation-cap"
+        },
+        {
+          "title": "إنترنت مستقر",
+          "icon": "fa-solid fa-wifi"
+        },
+        {
+          "title": "كهرباء متوفرة",
+          "icon": "fa-solid fa-bolt"
+        },
+        {
+          "title": "تدريب يجمع بين المعرفة والتطبيق",
+          "icon": "fa-solid fa-laptop-code"
+        },
+        {
+          "title": "فرصة للتواصل وتبادل الخبرات",
+          "icon": "fa-solid fa-users"
+        },
+        {
+          "title": "دعم وتوجيه خلال رحلة التعلم والتطوير",
+          "icon": "fa-solid fa-hands-helping"
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "type": "contact",
+      "title": "تواصل معنا",
+      "subtitle": "خلينا نبدأ رحلتك مع بعض.",
+      "description": "عندك استفسار عن برامجنا أو خدماتنا؟ تواصل معنا، وفريق مدار تك جاهز يساعدك.",
+      "image": "assets/images/contact.jpeg"
+    }
+  ],
+  "footer": {
+    "tagline": "نتعلم اليوم لنصنع فرص الغد.",
+    "links": [
+      {
+        "label": "الرئيسية",
+        "href": "#list",
+        "icon": "fa-solid fa-house"
+      },
+      {
+        "label": "من نحن",
+        "href": "#about",
+        "icon": "fa-solid fa-circle-info"
+      },
+      {
+        "label": "خدماتنا",
+        "href": "#Services",
+        "icon": "fa-solid fa-layer-group"
+      },
+      {
+        "label": "تواصل معنا",
+        "href": "#contact",
+        "icon": "fa-solid fa-envelope"
+      }
+    ],
+    "socialLinks": [
+      {
+        "label": "إنستغرام",
+        "href": "https://www.instagram.com/madar_tech0",
+        "icon": "fa-brands fa-instagram"
+      },
+      {
+        "label": "البريد الإلكتروني",
+        "href": "mailto:madartech1@gmail.com",
+        "icon": "fa-regular fa-envelope"
+      },
+      {
+        "label": "الموقع",
+        "href": "#contact",
+        "icon": "fa-solid fa-location-dot"
+      }
+    ],
+    "copyright": "جميع الحقوق محفوظة © 2026",
+    "brand": "مدار تك"
+  },
+  "appearance": {
+    "primaryColor": "#06243d",
+    "accentColor": "#d5e159",
+    "backgroundColor": "#f4f7fa"
+  }
+}

@@ -1,17 +1,22 @@
-# Madar Tech Landing Page
+# Madar Tech Landing Page and CMS
 
-Static Arabic landing page for Madar Tech.
+Arabic Madar Tech landing page with a local content-management dashboard.
 
-## Project structure
+## Run the site and dashboard
 
-- `index.html` — page entry point
-- `assets/css/` — Bootstrap and site styles
-- `assets/fonts/` — local Dahab fonts
-- `assets/images/` — page images and logo
-- `assets/js/` — page scripts
+Install Node.js 18 or newer, then run this command from the project directory:
 
-## Hero slider
+```powershell
+node dashboard/server.js
+```
 
-The hero includes three responsive slides with five-second autoplay, navigation controls, and touch-swipe support. Its styles and behavior are in `assets/css/style.css` and `assets/js/script.js`.
+Open the landing page at `http://127.0.0.1:4173/` and the dashboard at `http://127.0.0.1:4173/dashboard/`. The server binds to loopback only; do not expose this unauthenticated editor to the internet.
 
-Open `index.html` directly or use VS Code Live Server to preview the site.
+## Content and media
+
+- `dashboard/data/site-content.json` contains the published page content and the original Madar Tech colors.
+- The dashboard previews drafts in the browser and publishes them to the shared JSON file.
+- Uploaded images are stored in `assets/images/`.
+- The landing page reads the published content from the local server. Its original HTML and styles remain the fallback when opened directly without the server.
+
+This lightweight single-site setup does not require a database. Add authentication and persistent media/data storage before hosting the CMS for remote access or multiple editors.

@@ -1,3 +1,4 @@
+const initializeWebsite = () => {
 const navigation = document.querySelector(".list");
 const siteHeader = document.querySelector(".site-header");
 const menuToggle = navigation.querySelector(".menu-toggle");
@@ -250,4 +251,11 @@ if (document.querySelector(".hero-slider")) {
   }
   updateSlideAccessibility(activeSlide);
   startAutoplay();
+}
+};
+
+if (window.madarContentReady) {
+  window.madarContentReady.then(initializeWebsite);
+} else {
+  initializeWebsite();
 }

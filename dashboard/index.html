@@ -4,193 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#03213D">
-    <title>لوحة التحكم | مدار تك</title>
+    <title>إدارة محتوى الموقع | مدار تك</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="dashboard-layout">
         <aside class="dashboard-sidebar">
-            <div class="dashboard-brand">
-                <img src="../assets/images/Artboard 1.png" alt="شعار مدار تك">
-                <div>
-                    <strong>مدار تك</strong>
-                    <span>لوحة الإدارة</span>
-                </div>
-                <span class="dashboard-brand-mark" aria-hidden="true">MT</span>
-            </div>
-
-            <p class="dashboard-sidebar-heading">القائمة الرئيسية</p>
-            <nav aria-label="أقسام لوحة التحكم">
-                <ul class="dashboard-nav-list">
-                    <li>
-                        <span class="dashboard-nav-item is-current" aria-current="page">
-                            <span class="dashboard-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span>
-                            <span>نظرة عامة</span>
-                            <span class="dashboard-nav-indicator" aria-hidden="true"></span>
-                        </span>
-                    </li>
-                    <li>
-                        <span class="dashboard-nav-item">
-                            <span class="dashboard-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 20v-1.6a3.4 3.4 0 0 0-3.4-3.4H6.4A3.4 3.4 0 0 0 3 18.4V20"/><circle cx="9.5" cy="7" r="3.5"/><path d="M17 11a3.5 3.5 0 0 0 0-6.8M21 20v-1.6a3.4 3.4 0 0 0-2.5-3.3"/></svg></span>
-                            <span>المستخدمون</span>
-                        </span>
-                    </li>
-                    <li>
-                        <span class="dashboard-nav-item">
-                            <span class="dashboard-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 9 9-5 9 5-9 5-9-5Z"/><path d="M7 11.2v4.3c2.8 2.2 7.2 2.2 10 0v-4.3M21 9v6"/></svg></span>
-                            <span>البرامج التدريبية</span>
-                        </span>
-                    </li>
-                    <li>
-                        <span class="dashboard-nav-item">
-                            <span class="dashboard-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V8l8-4 8 4v12"/><path d="M8 20v-5h8v5M9 10h.01M15 10h.01"/></svg></span>
-                            <span>الخدمات</span>
-                        </span>
-                    </li>
-                    <li>
-                        <span class="dashboard-nav-item">
-                            <span class="dashboard-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h17"/><path d="m7 15 4-4 3 2 6-7"/></svg></span>
-                            <span>التقارير</span>
-                        </span>
-                    </li>
-                    <li>
-                        <span class="dashboard-nav-item">
-                            <span class="dashboard-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1a1.8 1.8 0 1 1-2.5 2.5l-.1-.1a1.8 1.8 0 0 0-3 .9v.2a1.8 1.8 0 1 1-3.6 0v-.2a1.8 1.8 0 0 0-3-.9l-.1.1a1.8 1.8 0 1 1-2.5-2.5l.1-.1a1.8 1.8 0 0 0-.9-3h-.2a1.8 1.8 0 1 1 0-3.6h.2a1.8 1.8 0 0 0 .9-3l-.1-.1a1.8 1.8 0 1 1 2.5-2.5l.1.1a1.8 1.8 0 0 0 3-.9v-.2a1.8 1.8 0 1 1 3.6 0v.2a1.8 1.8 0 0 0 3 .9l.1-.1a1.8 1.8 0 1 1 2.5 2.5l-.1.1a1.8 1.8 0 0 0 .9 3h.2a1.8 1.8 0 1 1 0 3.6h-.2a1.8 1.8 0 0 0-.9 3Z"/></svg></span>
-                            <span>الإعدادات</span>
-                        </span>
-                    </li>
-                </ul>
+            <a class="dashboard-brand" href="../index.html" aria-label="مدار تك - الموقع">
+                <img src="../assets/images/Artboard%201.png" alt="">
+                <span><strong>مدار تك</strong><small>إدارة الموقع</small></span>
+            </a>
+            <p class="sidebar-label">إدارة المحتوى</p>
+            <nav class="dashboard-nav" aria-label="أقسام لوحة التحكم">
+                <button class="nav-item is-active" type="button" data-page="overview"><span aria-hidden="true">⌂</span>نظرة عامة</button>
+                <button class="nav-item" type="button" data-page="content"><span aria-hidden="true">▤</span>محتوى الصفحة</button>
+                <button class="nav-item" type="button" data-page="hero"><span aria-hidden="true">▧</span>عارض الصور</button>
+                <button class="nav-item" type="button" data-page="sections"><span aria-hidden="true">☷</span>إدارة الأقسام</button>
+                <button class="nav-item" type="button" data-page="media"><span aria-hidden="true">▧</span>الوسائط</button>
+                <button class="nav-item" type="button" data-page="appearance"><span aria-hidden="true">◉</span>المظهر</button>
+                <button class="nav-item" type="button" data-page="settings"><span aria-hidden="true">⚙</span>الإعدادات</button>
             </nav>
-
-            <div class="dashboard-sidebar-note">
-                <span class="dashboard-status-dot" aria-hidden="true"></span>
-                <div>
-                    <strong>واجهة أولية</strong>
-                    <span>المحتوى قيد التطوير</span>
-                </div>
-            </div>
+            <a class="site-link" href="../index.html" target="_blank" rel="noopener">فتح الموقع <span aria-hidden="true">↗</span></a>
         </aside>
 
         <div class="dashboard-workspace">
-            <header class="dashboard-topbar">
-                <div class="dashboard-breadcrumb">
-                    <span>مدار تك</span>
-                    <span aria-hidden="true">/</span>
-                    <strong>لوحة التحكم</strong>
+            <header class="topbar">
+                <div>
+                    <span class="breadcrumb">مدار تك <span aria-hidden="true">/</span> إدارة الموقع</span>
+                    <h1 id="page-title">نظرة عامة</h1>
                 </div>
-                <div class="dashboard-account">
-                    <span class="dashboard-status-label">قيد التطوير</span>
-                    <span class="dashboard-avatar" aria-hidden="true">م</span>
-                    <div class="dashboard-account-copy">
-                        <strong>فريق مدار تك</strong>
-                        <span>مساحة الإدارة</span>
-                    </div>
+                <div class="topbar-actions">
+                    <span class="save-state" id="save-state" role="status">جارٍ تحميل المحتوى...</span>
+                    <button class="button button-quiet" id="preview-button" type="button">معاينة</button>
+                    <button class="button button-primary" id="publish-button" type="button" disabled>نشر التغييرات</button>
                 </div>
             </header>
-
-            <main class="dashboard-content" id="overview">
-                <div class="dashboard-page-heading">
-                    <div>
-                        <p class="dashboard-eyebrow">مساحة الإدارة</p>
-                        <h1>نظرة عامة</h1>
-                        <p class="dashboard-intro">مرحبًا بك في لوحة تحكم مدار تك. ستظهر بيانات المنصة هنا مستقبلًا.</p>
-                    </div>
-                    <span class="dashboard-date-placeholder">ملخص المنصة</span>
-                </div>
-
-                <section class="dashboard-welcome" aria-labelledby="welcome-title">
-                    <div>
-                        <span class="dashboard-welcome-label">لوحة تحكم مدار تك</span>
-                        <h2 id="welcome-title">نتعلم اليوم لنصنع فرص الغد</h2>
-                        <p>هذه مساحة مخصصة لإدارة محتوى وخدمات مدار تك، وسيتم تطوير أقسامها لاحقًا.</p>
-                    </div>
-                    <span class="dashboard-welcome-mark" aria-hidden="true">MT</span>
-                </section>
-
-                <section class="dashboard-stats" aria-label="ملخص إحصائي">
-                    <article class="dashboard-card">
-                        <span class="dashboard-card-icon" aria-hidden="true">م</span>
-                        <span class="dashboard-card-label">إجمالي المستخدمين</span>
-                        <strong class="dashboard-card-value">—</strong>
-                        <span class="dashboard-card-note">سيتم عرض البيانات لاحقًا</span>
-                    </article>
-                    <article class="dashboard-card">
-                        <span class="dashboard-card-icon" aria-hidden="true">ب</span>
-                        <span class="dashboard-card-label">البرامج التدريبية</span>
-                        <strong class="dashboard-card-value">—</strong>
-                        <span class="dashboard-card-note">سيتم عرض البيانات لاحقًا</span>
-                    </article>
-                    <article class="dashboard-card">
-                        <span class="dashboard-card-icon" aria-hidden="true">خ</span>
-                        <span class="dashboard-card-label">الخدمات</span>
-                        <strong class="dashboard-card-value">—</strong>
-                        <span class="dashboard-card-note">سيتم عرض البيانات لاحقًا</span>
-                    </article>
-                    <article class="dashboard-card">
-                        <span class="dashboard-card-icon" aria-hidden="true">ط</span>
-                        <span class="dashboard-card-label">الطلبات الجديدة</span>
-                        <strong class="dashboard-card-value">—</strong>
-                        <span class="dashboard-card-note">سيتم عرض البيانات لاحقًا</span>
-                    </article>
-                </section>
-
-                <div class="dashboard-panels">
-                    <section class="dashboard-panel" aria-labelledby="activity-title">
-                        <div class="dashboard-panel-heading">
-                            <div>
-                                <h2 id="activity-title">النشاط</h2>
-                                <p>ملخص النشاط سيظهر هنا</p>
-                            </div>
-                            <span class="dashboard-panel-tag">قريبًا</span>
-                        </div>
-                        <div class="dashboard-empty-state">
-                            <span class="dashboard-empty-mark" aria-hidden="true">—</span>
-                            <strong>لا توجد بيانات بعد</strong>
-                            <span>سيتم إضافة هذا القسم في مرحلة لاحقة.</span>
-                        </div>
-                    </section>
-
-                    <section class="dashboard-panel" aria-labelledby="programs-title">
-                        <div class="dashboard-panel-heading">
-                            <div>
-                                <h2 id="programs-title">البرامج التدريبية</h2>
-                                <p>نظرة على البرامج</p>
-                            </div>
-                            <span class="dashboard-panel-tag">قريبًا</span>
-                        </div>
-                        <div class="dashboard-empty-state">
-                            <span class="dashboard-empty-mark" aria-hidden="true">—</span>
-                            <strong>سيظهر محتوى البرامج هنا</strong>
-                            <span>لا توجد بيانات للعرض في الوقت الحالي.</span>
-                        </div>
-                    </section>
-                </div>
-
-                <section class="dashboard-panel dashboard-table-panel" aria-labelledby="updates-title">
-                    <div class="dashboard-panel-heading">
-                        <div>
-                            <h2 id="updates-title">آخر التحديثات</h2>
-                            <p>مساحة مخصصة للتحديثات المستقبلية</p>
-                        </div>
-                        <span class="dashboard-panel-tag">قريبًا</span>
-                    </div>
-                    <div class="dashboard-table-placeholder" aria-hidden="true">
-                        <span>العنوان</span>
-                        <span>القسم</span>
-                        <span>التاريخ</span>
-                        <span>الحالة</span>
-                    </div>
-                    <p class="dashboard-table-empty">ستظهر التحديثات هنا عند توفرها.</p>
-                </section>
+            <main id="cms-view" class="cms-view" tabindex="-1">
+                <div class="loading-state" role="status">جارٍ تحميل محتوى الموقع...</div>
             </main>
-
-            <footer class="dashboard-footer">
-                <span>مدار تك</span>
-                <span>واجهة ثابتة أولية</span>
-            </footer>
         </div>
     </div>
-
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <script src="js/script.js"></script>
 </body>
 </html>
