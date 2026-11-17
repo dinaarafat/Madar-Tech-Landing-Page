@@ -452,6 +452,15 @@
 
     languageToggle.addEventListener("click", () => {
       const shouldOpen = languageMenu.hidden;
+      if (shouldOpen) {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navigationLinks = document.querySelector("#site-navigation");
+        if (menuToggle && navigationLinks) {
+          navigationLinks.classList.remove("active");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", UI_TRANSLATIONS[document.documentElement.lang].openMenu);
+        }
+      }
       languageMenu.hidden = !shouldOpen;
       languageToggle.setAttribute("aria-expanded", String(shouldOpen));
       if (shouldOpen) languageMenu.querySelector("button")?.focus();

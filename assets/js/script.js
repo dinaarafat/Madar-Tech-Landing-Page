@@ -4,7 +4,7 @@ const siteHeader = document.querySelector(".site-header");
 const menuToggle = navigation.querySelector(".menu-toggle");
 const navigationLinks = navigation.querySelector("#site-navigation");
 const themeToggle = navigation.querySelector("#theme-toggle");
-const desktopNavigation = window.matchMedia("(min-width: 992px)");
+const desktopNavigation = window.matchMedia("(min-width: 1101px)");
 let highlightedLink = null;
 
 const getUiText = () => {
