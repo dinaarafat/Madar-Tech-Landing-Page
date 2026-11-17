@@ -18,7 +18,9 @@ const SECTION_LABELS = {
 };
 
 let content = null;
+let siteContent = null;
 let currentPage = "overview";
+let activeLanguage = "ar";
 let isDirty = false;
 let mediaFiles = [];
 let toastTimer;
@@ -28,6 +30,7 @@ const pageTitle = document.querySelector("#page-title");
 const saveState = document.querySelector("#save-state");
 const publishButton = document.querySelector("#publish-button");
 const toast = document.querySelector("#toast");
+const languageSelect = document.querySelector("#content-language");
 
 function escapeHtml(value) {
   return String(value ?? "").replace(/[&<>"']/g, (character) => ({
@@ -83,8 +86,31 @@ function getPathValue(path) {
 function setPathValue(path, value) {
   const keys = path.split(".");
   const lastKey = keys.pop();
-  const parent = keys.reduce((target, key) => target[key], content);
+  const root = path.startsWith("appearance.") ? siteContent : content;
+  const parent = keys.reduce((target, key) => target[key], root);
   parent[lastKey] = value;
+}
+
+function languageLabel(language) {
+  return ({ ar: "العربية", en: "English" })[language] || language;
+}
+
+function setContentLanguage(language) {
+  activeLanguage = language;
+  content = language === "ar" ? siteContent : siteContent.translations[language];
+  languageSelect.value = language;
+  localStorage.setItem("madar-tech-cms-language", language);
+  renderPage();
+}
+
+function renderLanguageOptions() {
+  const languages = ["ar", ...Object.keys(siteContent.translations)];
+  languageSelect.replaceChildren(...languages.map((language) => {
+    const option = document.createElement("option");
+    option.value = language;
+    option.textContent = languageLabel(language);
+    return option;
+  }));
 }
 
 function setActivePage(page) {
@@ -207,7 +233,7 @@ async function renderMediaPage() {
 }
 
 function renderAppearancePage() {
-  const appearance = content.appearance;
+  const appearance = siteContent.appearance;
   view.innerHTML = `<p class="page-intro">غيّر ألوان هوية الموقع. القيم الافتراضية مطابقة لتصميم مدار تك الحالي.</p>${panel("ألوان الموقع", `<div class="field-grid">${colorField("appearance.primaryColor", "اللون الأساسي — كحلي", appearance.primaryColor)}${colorField("appearance.accentColor", "اللون المميز — ليموني", appearance.accentColor)}${colorField("appearance.backgroundColor", "لون الخلفية", appearance.backgroundColor)}</div>`)}`;
 }
 
@@ -240,15 +266,15 @@ function moveItem(items, index, offset) {
 
 function blankSection(type) {
   const id = `${type}-${Date.now().toString(36)}`;
-  if (type === "services") return { id, type, title: "خدماتنا", items: [] };
-  if (type === "programs") return { id, type, title: "البرامج التدريبية", subtitle: "", items: [] };
-  return { id, type: "custom", title: "قسم جديد", description: "" };
+  if (type === "services") return { id, type, title: activeLanguage === "ar" ? "خدماتنا" : "Our services", items: [] };
+  if (type === "programs") return { id, type, title: activeLanguage === "ar" ? "البرامج التدريبية" : "Training programs", subtitle: "", items: [] };
+  return { id, type: "custom", title: activeLanguage === "ar" ? "قسم جديد" : "New section", description: "" };
 }
 
 function blankItem(type) {
-  if (type === "services") return { title: "خدمة جديدة", description: "", image: "" };
-  if (type === "programs") return { title: "برنامج جديد", description: "", buttonLabel: "اعرف المزيد" };
-  return { title: "ميزة جديدة", icon: "fa-solid fa-star" };
+  if (type === "services") return { title: activeLanguage === "ar" ? "خدمة جديدة" : "New service", description: "", image: "" };
+  if (type === "programs") return { title: activeLanguage === "ar" ? "برنامج جديد" : "New program", description: "", buttonLabel: activeLanguage === "ar" ? "اعرف المزيد" : "Learn more" };
+  return { title: activeLanguage === "ar" ? "ميزة جديدة" : "New feature", icon: "fa-solid fa-star" };
 }
 
 function handleAction(button) {
@@ -263,7 +289,15 @@ function handleAction(button) {
       .catch((error) => showToast(`تعذر نسخ المسار: ${error.message}`, true));
     return;
   } else if (action === "slide-add") {
-    content.heroSlides.push({ title: "عنوان شريحة جديدة", description: "", image: "", primaryLabel: "اكتشف المزيد", primaryHref: "#contact", secondaryLabel: "تواصل معنا", secondaryHref: "#contact" });
+    content.heroSlides.push({
+      title: activeLanguage === "ar" ? "عنوان شريحة جديدة" : "New slide title",
+      description: "",
+      image: "",
+      primaryLabel: activeLanguage === "ar" ? "اكتشف المزيد" : "Discover more",
+      primaryHref: "#contact",
+      secondaryLabel: activeLanguage === "ar" ? "تواصل معنا" : "Contact us",
+      secondaryHref: "#contact"
+    });
     currentPage = "hero";
   } else if (action === "slide-delete") {
     if (content.heroSlides.length <= 1) return showToast("يجب الإبقاء على شريحة واحدة على الأقل.", true);
@@ -286,11 +320,11 @@ function handleAction(button) {
     const section = content.sections[sectionIndex];
     section.items.splice(index, 1);
   } else if (action === "footer-link-add") {
-    content.footer.links.push({ label: "رابط جديد", href: "#", icon: "fa-solid fa-link" });
+    content.footer.links.push({ label: activeLanguage === "ar" ? "رابط جديد" : "New link", href: "#", icon: "fa-solid fa-link" });
   } else if (action === "footer-link-delete") {
     content.footer.links.splice(index, 1);
   } else if (action === "social-link-add") {
-    content.footer.socialLinks.push({ label: "حساب جديد", href: "#", icon: "fa-solid fa-link" });
+    content.footer.socialLinks.push({ label: activeLanguage === "ar" ? "حساب جديد" : "New account", href: "#", icon: "fa-solid fa-link" });
   } else if (action === "social-link-delete") {
     content.footer.socialLinks.splice(index, 1);
   } else {
@@ -360,7 +394,7 @@ async function uploadMedia(event) {
 async function publishContent() {
   publishButton.disabled = true;
   saveState.textContent = "جارٍ نشر التغييرات...";
-  const publishedSnapshot = JSON.stringify(content);
+  const publishedSnapshot = JSON.stringify(siteContent);
   try {
     const response = await fetch("../api/content", {
       method: "PUT",
@@ -369,7 +403,7 @@ async function publishContent() {
     });
     const result = await response.json();
     if (!response.ok) throw new Error(result.error || "تعذر نشر المحتوى.");
-    isDirty = JSON.stringify(content) !== publishedSnapshot;
+    isDirty = JSON.stringify(siteContent) !== publishedSnapshot;
     if (!isDirty) localStorage.removeItem(PREVIEW_KEY);
     publishButton.disabled = !isDirty;
     saveState.textContent = isDirty ? "نُشرت النسخة السابقة؛ توجد تعديلات جديدة" : "تم نشر التغييرات";
@@ -383,8 +417,8 @@ async function publishContent() {
 
 function previewContent() {
   try {
-    localStorage.setItem(PREVIEW_KEY, JSON.stringify(content));
-    window.open("../index.html?preview=1", "_blank", "noopener");
+    localStorage.setItem(PREVIEW_KEY, JSON.stringify(siteContent));
+    window.open(`../index.html?preview=1&lang=${encodeURIComponent(activeLanguage)}`, "_blank", "noopener");
   } catch (error) {
     showToast(`تعذّر حفظ مسودة المعاينة: ${error.message}`, true);
   }
@@ -395,7 +429,13 @@ async function initialize() {
     const response = await fetch("../api/content", { cache: "no-store" });
     const result = await response.json();
     if (!response.ok) throw new Error(result.error || "تعذر تحميل محتوى الموقع.");
-    content = result;
+    siteContent = result;
+    renderLanguageOptions();
+    const savedLanguage = localStorage.getItem("madar-tech-cms-language");
+    const availableLanguage = savedLanguage === "ar" || Object.hasOwn(siteContent.translations, savedLanguage)
+      ? savedLanguage
+      : "ar";
+    setContentLanguage(availableLanguage);
     saveState.textContent = "المحتوى متصل";
     publishButton.disabled = true;
     renderPage();
@@ -411,6 +451,7 @@ document.querySelector(".dashboard-nav").addEventListener("click", (event) => {
   if (button) setActivePage(button.dataset.page);
 });
 
+languageSelect.addEventListener("change", () => setContentLanguage(languageSelect.value));
 view.addEventListener("input", handleInput);
 view.addEventListener("change", handleInput);
 view.addEventListener("click", (event) => {

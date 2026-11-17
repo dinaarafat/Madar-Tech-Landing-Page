@@ -44,17 +44,20 @@
     });
   };
 
-  const buildHero = (slides) => {
+  const buildHero = (slides, language) => {
     const section = element("section", "hero-slider");
     section.id = "home";
+    section.dir = language === "ar" ? "rtl" : "ltr";
     section.setAttribute("aria-roledescription", "carousel");
-    section.setAttribute("aria-label", "مدار تك");
+    section.setAttribute("aria-label", language === "ar" ? "مدار تك" : "Madar Tech");
     const slideList = element("div", "hero-slides");
     slides.forEach((slide, index) => {
       const article = element("article", `hero-slide${index === 0 ? " is-active" : ""}`);
       article.setAttribute("role", "group");
       article.setAttribute("aria-roledescription", "slide");
-      article.setAttribute("aria-label", `${index + 1} من ${slides.length}`);
+      article.setAttribute("aria-label", language === "ar"
+        ? `${index + 1} من ${slides.length}`
+        : `${index + 1} of ${slides.length}`);
       article.setAttribute("aria-hidden", String(index !== 0));
       article.inert = index !== 0;
       const image = makeImage(slide.image, "", "hero-slide-image");
@@ -89,23 +92,23 @@
     const controls = element("div", "hero-controls");
     const previous = element("button", "hero-arrow hero-arrow-previous");
     previous.type = "button";
-    previous.setAttribute("aria-label", "الشريحة السابقة");
+    previous.setAttribute("aria-label", language === "ar" ? "الشريحة السابقة" : "Previous slide");
     const previousIcon = element("i", "fa-solid fa-chevron-right");
     previousIcon.setAttribute("aria-hidden", "true");
     previous.append(previousIcon);
     const pagination = element("div", "hero-pagination");
     pagination.setAttribute("role", "group");
-    pagination.setAttribute("aria-label", "اختيار الشريحة");
+    pagination.setAttribute("aria-label", language === "ar" ? "اختيار الشريحة" : "Choose a slide");
     slides.forEach((slide, index) => {
       const dot = element("button", `hero-dot${index === 0 ? " is-active" : ""}`);
       dot.type = "button";
-      dot.setAttribute("aria-label", `الشريحة ${index + 1}`);
+      dot.setAttribute("aria-label", language === "ar" ? `الشريحة ${index + 1}` : `Slide ${index + 1}`);
       dot.setAttribute("aria-current", String(index === 0));
       pagination.append(dot);
     });
     const next = element("button", "hero-arrow hero-arrow-next");
     next.type = "button";
-    next.setAttribute("aria-label", "الشريحة التالية");
+    next.setAttribute("aria-label", language === "ar" ? "الشريحة التالية" : "Next slide");
     const nextIcon = element("i", "fa-solid fa-chevron-left");
     nextIcon.setAttribute("aria-hidden", "true");
     next.append(nextIcon);
@@ -213,22 +216,22 @@
     return node;
   };
 
-  const buildContact = (section) => {
+  const buildContact = (section, language) => {
     const node = element("section", "Contact Us");
     node.id = sectionId(section) || "contact";
     const container = element("div", "container");
     const row = element("div", "row contact-layout align-items-center");
     const imageColumn = element("div", "col-lg-6 contact-image-side");
-    imageColumn.append(makeImage(section.image, "تواصل مع مدار تك", ""));
+    imageColumn.append(makeImage(section.image, language === "ar" ? "تواصل مع مدار تك" : "Contact Madar Tech", ""));
     const formColumn = element("div", "col-lg-6 contact-form-side");
     const heading = element("div", "contact-heading");
     heading.append(element("h2", "", section.title), element("h4", "", section.subtitle), element("p", "", section.description));
     const form = element("form", "contact-form");
     [
-      { tag: "input", type: "text", placeholder: "الاسم", required: true },
-      { tag: "input", type: "email", placeholder: "ادخل عنوان البريد الإلكتروني", required: true },
-      { tag: "input", type: "tel", placeholder: "ادخل رقم الهاتف" },
-      { tag: "textarea", placeholder: "اكتب رسالتك هنا", required: true }
+      { tag: "input", type: "text", placeholder: language === "ar" ? "الاسم" : "Name", required: true },
+      { tag: "input", type: "email", placeholder: language === "ar" ? "ادخل عنوان البريد الإلكتروني" : "Email address", required: true },
+      { tag: "input", type: "tel", placeholder: language === "ar" ? "ادخل رقم الهاتف" : "Phone number" },
+      { tag: "textarea", placeholder: language === "ar" ? "اكتب رسالتك هنا" : "Write your message here", required: true }
     ].forEach((definition) => {
       const group = element("div", "form-group");
       const control = element(definition.tag, definition.tag === "input" ? "form-control" : "");
@@ -238,7 +241,7 @@
       group.append(control);
       form.append(group);
     });
-    const submit = element("button", "btn contact-submit", "إرسال");
+    const submit = element("button", "btn contact-submit", language === "ar" ? "إرسال" : "Send");
     submit.type = "submit";
     form.append(submit);
     formColumn.append(heading, form);
@@ -269,20 +272,20 @@
     custom: buildCustom
   };
 
-  const buildFooter = (footer, logo) => {
+  const buildFooter = (footer, logo, language) => {
     const node = element("footer", "footer");
     const container = element("div", "container");
     const content = element("div", "footer-content");
     const about = element("div", "footer-about");
     const logoBox = element("div", "footer-logo");
-    logoBox.append(makeImage(logo, "شعار مدار تك", ""));
+    logoBox.append(makeImage(logo, language === "ar" ? "شعار مدار تك" : "Madar Tech logo", ""));
     const brandLink = element("a", "logo");
     brandLink.href = "#list";
     brandLink.append(element("span", "", "مدار"), element("span", "", "تك"));
     about.append(logoBox, brandLink, element("p", "", footer.tagline));
 
     const links = element("div", "footer-links");
-    links.append(element("h3", "", "روابط التنقل"));
+    links.append(element("h3", "", language === "ar" ? "روابط التنقل" : "Quick links"));
     (footer.links || []).forEach((item) => {
       const link = element("a");
       link.href = safeHref(item.href);
@@ -294,7 +297,7 @@
     });
 
     const social = element("div", "footer-social");
-    social.append(element("h3", "", "تابعنا"));
+    social.append(element("h3", "", language === "ar" ? "تابعنا" : "Follow us"));
     const socials = element("div", "socials");
     (footer.socialLinks || []).forEach((item) => {
       const link = element("a");
@@ -320,28 +323,59 @@
     return node;
   };
 
-  const applyContent = (content) => {
+  const applyContent = (content, appearance, language, languages) => {
     applyNavigation(content);
     const root = document.documentElement;
-    root.style.setProperty("--oxford-blue", content.appearance.primaryColor);
-    root.style.setProperty("--fresh-lime", content.appearance.accentColor);
-    root.style.setProperty("--Light-blue", content.appearance.backgroundColor);
+    root.lang = language;
+    root.dir = language === "ar" ? "rtl" : "ltr";
+    root.style.setProperty("--oxford-blue", appearance.primaryColor);
+    root.style.setProperty("--fresh-lime", appearance.accentColor);
+    root.style.setProperty("--Light-blue", appearance.backgroundColor);
+    const languageSelect = document.querySelector("#site-language");
+    languageSelect.replaceChildren(...languages.map((code) => {
+      const option = element("option", "", code === "ar" ? "العربية" : code === "en" ? "English" : code);
+      option.value = code;
+      return option;
+    }));
+    languageSelect.value = language;
+    const bookingLabel = document.querySelector(".btn-book-label");
+    if (bookingLabel) bookingLabel.textContent = language === "ar" ? "احجز الآن" : "Book now";
+    const menuToggle = document.querySelector(".menu-toggle");
+    if (menuToggle) menuToggle.setAttribute("aria-label", language === "ar" ? "فتح القائمة" : "Open menu");
 
     const main = document.querySelector("main");
     const sections = (content.sections || []).map((section) => {
+      if (section.type === "contact") return buildContact(section, language);
       const builder = sectionBuilders[section.type];
       return builder ? builder(section) : null;
     }).filter(Boolean);
-    main.replaceChildren(buildHero(content.heroSlides), ...sections, buildFooter(content.footer, content.brandLogo));
+    main.replaceChildren(buildHero(content.heroSlides, language), ...sections, buildFooter(content.footer, content.brandLogo, language));
+  };
+
+  const applySiteContent = (siteContent) => {
+    const languages = ["ar", ...Object.keys(siteContent.translations || {})];
+    const params = new URLSearchParams(window.location.search);
+    const requestedLanguage = params.get("lang") || localStorage.getItem("madar-tech-site-language") || "ar";
+    const language = languages.includes(requestedLanguage) ? requestedLanguage : "ar";
+    const content = language === "ar" ? siteContent : siteContent.translations[language];
+    if (!content) throw new Error(`تعذر تحميل ترجمة اللغة ${language}.`);
+    applyContent(content, siteContent.appearance, language, languages);
   };
 
   const loadContent = async () => {
+    const languageSelect = document.querySelector("#site-language");
+    languageSelect.addEventListener("change", () => {
+      localStorage.setItem("madar-tech-site-language", languageSelect.value);
+      const url = new URL(window.location.href);
+      url.searchParams.set("lang", languageSelect.value);
+      window.location.assign(url);
+    });
     const isPreview = new URLSearchParams(window.location.search).has("preview");
     if (isPreview) {
       try {
         const draft = localStorage.getItem(PREVIEW_KEY);
         if (draft) {
-          applyContent(JSON.parse(draft));
+          applySiteContent(JSON.parse(draft));
           return;
         }
       } catch (error) {
@@ -354,7 +388,7 @@
     try {
       const response = await fetch("/api/content", { cache: "no-store" });
       if (!response.ok) throw new Error(`تعذر تحميل محتوى الموقع (${response.status}).`);
-      applyContent(await response.json());
+      applySiteContent(await response.json());
     } catch (error) {
       console.error("تعذر الاتصال بمحتوى إدارة الموقع؛ سيتم عرض النسخة الافتراضية.", error);
     }

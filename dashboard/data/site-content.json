@@ -1,5 +1,5 @@
 {
-  "siteTitle": "مدار تك \" مساحتك للتعلم \" و التطور",
+  "siteTitle": "Madar Tech",
   "brandLogo": "assets/images/Artboard 1.png",
   "navigation": [
     "الرئيسية",
@@ -186,5 +186,192 @@
     "primaryColor": "#06243d",
     "accentColor": "#d5e159",
     "backgroundColor": "#f4f7fa"
+  },
+  "translations": {
+    "en": {
+      "siteTitle": "Madar Tech | Learn, grow, and create opportunities",
+      "brandLogo": "assets/images/Artboard 1.png",
+      "navigation": [
+        "Home",
+        "About us",
+        "Services",
+        "Training programs",
+        "Contact us"
+      ],
+      "heroSlides": [
+        {
+          "title": "Your space to learn,\ngrow, and create opportunities",
+          "description": "Madar Tech is an educational and training institution in Khan Younis. We help students, graduates, and young people develop their skills, gain practical experience, and discover new opportunities.",
+          "image": "assets/images/bg1.jpg",
+          "primaryLabel": "Contact us",
+          "primaryHref": "#contact",
+          "secondaryLabel": "Explore our services",
+          "secondaryHref": "#Services"
+        },
+        {
+          "title": "Co-working spaces",
+          "description": "A welcoming place for students, freelancers, and entrepreneurs to get things done and exchange ideas.",
+          "image": "assets/images/2ch.jpeg",
+          "primaryLabel": "Explore our services",
+          "primaryHref": "#Services",
+          "secondaryLabel": "Contact us",
+          "secondaryHref": "#contact"
+        },
+        {
+          "title": "Training rooms",
+          "description": "Well-equipped rooms for training courses, meetings, events, and activities.",
+          "image": "assets/images/3ch.jpeg",
+          "primaryLabel": "Training programs",
+          "primaryHref": "#Programs",
+          "secondaryLabel": "Contact us",
+          "secondaryHref": "#contact"
+        }
+      ],
+      "sections": [
+        {
+          "id": "about",
+          "type": "about",
+          "title": "Learn today to create tomorrow's opportunities",
+          "description": "Madar Tech connects academic knowledge with practical experience through training programs and educational activities that help young people develop their abilities and meet the needs of the job market.",
+          "visionTitle": "Our vision",
+          "vision": "To be an educational and training environment that helps build a generation with the knowledge, skills, and confidence to create opportunities.",
+          "missionTitle": "Our mission",
+          "mission": "To provide quality learning and training opportunities that help people discover their potential, develop their skills, and put knowledge into practice."
+        },
+        {
+          "id": "services",
+          "type": "services",
+          "title": "Our services",
+          "items": [
+            {
+              "title": "Training and development",
+              "description": "Specialized training programs that build technical and professional skills through learning and hands-on practice.",
+              "image": "assets/images/1ch.jpeg"
+            },
+            {
+              "title": "Co-working spaces",
+              "description": "A welcoming place for students, freelancers, and entrepreneurs to get things done and exchange ideas.",
+              "image": "assets/images/2ch.jpeg"
+            },
+            {
+              "title": "Training rooms",
+              "description": "Well-equipped rooms for training courses, meetings, events, and activities.",
+              "image": "assets/images/3ch.jpeg"
+            },
+            {
+              "title": "Educational activities",
+              "description": "Learning events and initiatives that encourage sharing knowledge and experience.",
+              "image": "assets/images/4ch.jpeg"
+            }
+          ]
+        },
+        {
+          "id": "programs",
+          "type": "programs",
+          "title": "Training programs",
+          "subtitle": "Build your skills and take your next step.",
+          "items": [
+            {
+              "title": "Front-End Development",
+              "description": "Learn the fundamentals of building website interfaces.",
+              "buttonLabel": "Learn more"
+            },
+            {
+              "title": "Artificial Intelligence",
+              "description": "Explore AI tools and their practical applications.",
+              "buttonLabel": "Learn more"
+            },
+            {
+              "title": "Digital Skills",
+              "description": "Develop digital skills and learn to use technology tools.",
+              "buttonLabel": "Learn more"
+            }
+          ]
+        },
+        {
+          "id": "why",
+          "type": "why",
+          "title": "Why Madar Tech?",
+          "items": [
+            {
+              "title": "An inspiring learning environment",
+              "icon": "fa-solid fa-graduation-cap"
+            },
+            {
+              "title": "Reliable internet",
+              "icon": "fa-solid fa-wifi"
+            },
+            {
+              "title": "Reliable electricity",
+              "icon": "fa-solid fa-bolt"
+            },
+            {
+              "title": "Training that combines knowledge and practice",
+              "icon": "fa-solid fa-laptop-code"
+            },
+            {
+              "title": "Connect and share experience",
+              "icon": "fa-solid fa-users"
+            },
+            {
+              "title": "Support throughout your learning journey",
+              "icon": "fa-solid fa-hands-helping"
+            }
+          ]
+        },
+        {
+          "id": "contact",
+          "type": "contact",
+          "title": "Contact us",
+          "subtitle": "Let's start your journey together.",
+          "description": "Have a question about our programs or services? Get in touch—our team is ready to help.",
+          "image": "assets/images/contact.jpeg"
+        }
+      ],
+      "footer": {
+        "tagline": "Learn today to create tomorrow's opportunities.",
+        "links": [
+          {
+            "label": "Home",
+            "href": "#list",
+            "icon": "fa-solid fa-house"
+          },
+          {
+            "label": "About us",
+            "href": "#about",
+            "icon": "fa-solid fa-circle-info"
+          },
+          {
+            "label": "Services",
+            "href": "#Services",
+            "icon": "fa-solid fa-layer-group"
+          },
+          {
+            "label": "Contact us",
+            "href": "#contact",
+            "icon": "fa-solid fa-envelope"
+          }
+        ],
+        "socialLinks": [
+          {
+            "label": "Instagram",
+            "href": "https://www.instagram.com/madar_tech0",
+            "icon": "fa-brands fa-instagram"
+          },
+          {
+            "label": "Email",
+            "href": "mailto:madartech1@gmail.com",
+            "icon": "fa-regular fa-envelope"
+          },
+          {
+            "label": "Location",
+            "href": "#contact",
+            "icon": "fa-solid fa-location-dot"
+          }
+        ],
+        "copyright": "All rights reserved © 2026",
+        "brand": "Madar Tech"
+      }
+    }
   }
 }

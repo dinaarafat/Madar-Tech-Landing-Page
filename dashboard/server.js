@@ -59,15 +59,26 @@ async function readJson(request) {
   }
 }
 
-function isValidContent(content) {
+function isValidLocaleContent(content) {
   return content
     && typeof content === "object"
+    && typeof content.siteTitle === "string"
+    && Array.isArray(content.navigation)
     && Array.isArray(content.heroSlides)
     && Array.isArray(content.sections)
-    && content.appearance
-    && typeof content.appearance === "object"
     && content.footer
     && typeof content.footer === "object";
+}
+
+function isValidContent(content) {
+  return isValidLocaleContent(content)
+    && content.appearance
+    && typeof content.appearance === "object"
+    && content.translations
+    && typeof content.translations === "object"
+    && Object.keys(content.translations).length > 0
+    && Object.entries(content.translations).every(([language, locale]) =>
+      /^[a-z]{2}(?:-[A-Z]{2})?$/.test(language) && isValidLocaleContent(locale));
 }
 
 async function handleApi(request, response, pathname) {

@@ -152,6 +152,8 @@ button { cursor: pointer; }
 .breadcrumb span { padding-inline: 5px; }
 .topbar h1 { margin: 2px 0 0; color: var(--navy); font-size: 23px; line-height: 1.3; }
 .topbar-actions { display: flex; align-items: center; gap: 9px; }
+.language-control { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 13px; white-space: nowrap; }
+.language-control select { min-height: 38px; padding: 5px 9px; border: 1px solid var(--line); border-radius: 9px; color: var(--ink); background: #fff; }
 .save-state { margin-inline-end: 7px; color: var(--muted); font-size: 12px; }
 
 .button {
@@ -262,6 +264,7 @@ button { cursor: pointer; }
   .dashboard-workspace { margin-right: 0; }
   .topbar { position: static; align-items: flex-start; flex-direction: column; gap: 10px; }
   .topbar-actions { width: 100%; flex-wrap: wrap; }
+  .language-control { margin-inline-end: auto; }
   .save-state { margin-inline-end: auto; }
   .cms-view { padding-top: 22px; }
   .overview-grid { grid-template-columns: 1fr; }
