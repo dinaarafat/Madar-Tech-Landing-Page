@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مدار تك " مساحتك للتعلم " و التطور </title>
+    <meta name="description"
+        content="مدار تك مساحة تعليمية وتدريبية في خانيونس، تساعد الشباب على تطوير المهارات واكتساب الخبرة العملية والانطلاق نحو فرص جديدة.">
+    <meta name="theme-color" content="#09223D">
+    <title>مدار تك | تعلّم، طوّر مهاراتك، واصنع فرصتك</title>
     <!-- ربط ملفات CSS خارجية -->
     <!-- Boot Strap CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -20,6 +23,7 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">انتقل إلى المحتوى</a>
     <div class="site-wrapper">
         <!-- اسم الموقع او الشعار شريط البحث و تسجيل الدخول او اتصل بنا -->
         <header class="site-header">
@@ -27,7 +31,8 @@
             <nav class="list" id="list">
                 <!-- logo -->
                 <a href="#home" class="navbar-logo">
-                    <img src="assets/images/Artboard 1.png" alt="شعار مدار تك">
+                    <img src="assets/images/logo.png" alt="شعار مدار تك">
+                    <span class="brand-wordmark">مدار تك</span>
                 </a>
                 <!-- Navigation Links -->
                 <ul id="site-navigation">
@@ -37,10 +42,20 @@
                     <li> <a href="#Programs">البرامج التدريبية</a></li>
                     <li> <a href="#contact">تواصل معنا</a></li>
                 </ul>
-                <select class="language-select" id="site-language" aria-label="اختر لغة الموقع">
-                    <option value="ar">العربية</option>
-                    <option value="en">English</option>
-                </select>
+                <div class="language-picker" id="language-picker">
+                    <button class="icon-control language-toggle" id="site-language" type="button"
+                        aria-label="اختر لغة الموقع" aria-expanded="false" aria-controls="language-options">
+                        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                    </button>
+                    <div class="language-menu" id="language-options" hidden>
+                        <button class="language-option" type="button" data-language="ar">العربية</button>
+                        <button class="language-option" type="button" data-language="en">English</button>
+                    </div>
+                </div>
+                <button class="icon-control theme-toggle" id="theme-toggle" type="button"
+                    aria-label="التبديل إلى الوضع الداكن" aria-pressed="false">
+                    <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                </button>
                 <!-- Booking Button -->
                 <a href="#contact" class="btn-book">
                     <i class="fa-regular fa-calendar-check"></i>
@@ -57,13 +72,14 @@
             </nav>
         </header>
 
-        <main>
+        <main id="main-content">
             <section class="hero-slider" id="home" aria-roledescription="carousel" aria-label="مدار تك">
                 <div class="hero-slides">
                     <article class="hero-slide is-active" role="group" aria-roledescription="slide"
                         aria-label="1 من 3" aria-hidden="false">
                         <img class="hero-slide-image" src="assets/images/bg1.jpg" alt="" aria-hidden="true">
                         <div class="hero-copy">
+                            <p class="hero-kicker">مساحة للتعلّم، والمهارة، والفرص</p>
                             <h1 class="hero-title">
                                 <span>مساحتك للتعلّم</span>
                                 <span>التطور، وصناعة الفرص</span>
@@ -133,7 +149,7 @@
             <!-- معلومات عنا -->
             <section class="about" id="about">
 
-                <h1 class="heading">نتعلم اليوم لنصنع فرص الغد</h1>
+                <h2 class="heading">نتعلم اليوم لنصنع فرص الغد</h2>
                 <div class="row">
                     <div class="about-intro">
                         <p>مدار تك مؤسسة تعليمية وتدريبية تسعى إلى ربط المعرفة األكاديمية بالتطبيق العملي، من خالل تقديم
@@ -170,7 +186,7 @@
 
             <!-- Our Services -->
             <section class="Services" id="Services">
-                <h1 class="heading">خدماتنا</h1>
+                <h2 class="heading">خدماتنا</h2>
 
                 <div class="container">
                     <!-- 1 -->
@@ -360,20 +376,23 @@
 
                             <form class="contact-form">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="الاسم" required>
+                                    <input class="form-control" type="text" placeholder="الاسم" aria-label="الاسم" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <input class="form-control" type="email" placeholder="ادخل عنوان البريد الإلكتروني"
-                                        required>
+                                    <input class="form-control" type="email"
+                                        placeholder="ادخل عنوان البريد الإلكتروني"
+                                        aria-label="ادخل عنوان البريد الإلكتروني" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <input class="form-control" type="tel" placeholder="ادخل رقم الهاتف">
+                                    <input class="form-control" type="tel" placeholder="ادخل رقم الهاتف"
+                                        aria-label="ادخل رقم الهاتف">
                                 </div>
 
                                 <div class="form-group">
-                                    <textarea placeholder="اكتب رسالتك هنا" required></textarea>
+                                    <textarea placeholder="اكتب رسالتك هنا" aria-label="اكتب رسالتك هنا"
+                                        required></textarea>
                                 </div>
                                 <button type="submit" class="btn contact-submit"> إرسال</button>
                             </form>
@@ -408,25 +427,25 @@
                         <div class="footer-links">
                             <h3>روابط التنقل</h3>
 
-                            <a href="#list" title="الرئيسية"><i class="fa-solid fa-house"></i></a>
-                            <a href="#about" title="من نحن"><i class="fa-solid fa-circle-info"></i></a>
-                            <a href="#Services" title="خدماتنا"><i class="fa-solid fa-layer-group"></i></a>
-                            <a href="#contact" title="تواصل معنا"><i class="fa-solid fa-envelope"></i></a>
+                            <a href="#list" title="الرئيسية" aria-label="الرئيسية"><i class="fa-solid fa-house"></i></a>
+                            <a href="#about" title="من نحن" aria-label="من نحن"><i class="fa-solid fa-circle-info"></i></a>
+                            <a href="#Services" title="خدماتنا" aria-label="خدماتنا"><i class="fa-solid fa-layer-group"></i></a>
+                            <a href="#contact" title="تواصل معنا" aria-label="تواصل معنا"><i class="fa-solid fa-envelope"></i></a>
                         </div>
                         <!-- التواصل -->
                         <div class="footer-social">
                             <h3>تابعنا</h3>
 
                             <div class="socials">
-                                <a href="https://www.instagram.com/madar_tech0">
+                                <a href="https://www.instagram.com/madar_tech0" aria-label="إنستغرام">
                                     <i class="fa-brands fa-instagram"></i>
                                 </a>
 
-                                <a href="mailto:madartech1@gmail.com">
+                                <a href="mailto:madartech1@gmail.com" aria-label="البريد الإلكتروني">
                                     <i class="fa-regular fa-envelope"></i>
                                 </a>
 
-                                <a href="#">
+                                <a href="#contact" aria-label="الموقع">
                                     <i class="fa-solid fa-location-dot"></i>
                                 </a>
                             </div>

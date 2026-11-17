@@ -1,5 +1,62 @@
 (() => {
   const PREVIEW_KEY = "madar-tech-cms-preview";
+  const UI_TRANSLATIONS = {
+    ar: {
+      chooseLanguage: "اختر لغة الموقع",
+      switchToDark: "التبديل إلى الوضع الداكن",
+      switchToLight: "التبديل إلى الوضع الفاتح",
+      bookNow: "احجز الآن",
+      openMenu: "فتح القائمة",
+      closeMenu: "إغلاق القائمة",
+      heroKicker: "مساحة للتعلّم، والمهارة، والفرص",
+      slideOf: (index, total) => `${index} من ${total}`,
+      slideLabel: (index) => `الشريحة ${index}`,
+      previousSlide: "الشريحة السابقة",
+      nextSlide: "الشريحة التالية",
+      chooseSlide: "اختيار الشريحة",
+      contactName: "الاسم",
+      contactEmail: "ادخل عنوان البريد الإلكتروني",
+      contactPhone: "ادخل رقم الهاتف",
+      contactMessage: "اكتب رسالتك هنا",
+      send: "إرسال",
+      contactAlt: "تواصل مع مدار تك",
+      logoAlt: "شعار مدار تك",
+      brandName: "مدار تك",
+      brandParts: ["مدار", "تك"],
+      languageNames: { ar: "العربية", en: "الإنجليزية" },
+      quickLinks: "روابط التنقل",
+      followUs: "تابعنا",
+      skipToContent: "انتقل إلى المحتوى"
+    },
+    en: {
+      chooseLanguage: "Choose site language",
+      switchToDark: "Switch to dark mode",
+      switchToLight: "Switch to light mode",
+      bookNow: "Book now",
+      openMenu: "Open menu",
+      closeMenu: "Close menu",
+      heroKicker: "A space to learn, build skills, and find opportunity",
+      slideOf: (index, total) => `${index} of ${total}`,
+      slideLabel: (index) => `Slide ${index}`,
+      previousSlide: "Previous slide",
+      nextSlide: "Next slide",
+      chooseSlide: "Choose a slide",
+      contactName: "Name",
+      contactEmail: "Email address",
+      contactPhone: "Phone number",
+      contactMessage: "Write your message here",
+      send: "Send",
+      contactAlt: "Contact Madar Tech",
+      logoAlt: "Madar Tech logo",
+      brandName: "Madar Tech",
+      brandParts: ["Madar", "Tech"],
+      languageNames: { ar: "Arabic", en: "English" },
+      quickLinks: "Quick links",
+      followUs: "Follow us",
+      skipToContent: "Skip to content"
+    }
+  };
+  window.madarUITranslations = UI_TRANSLATIONS;
 
   const element = (tag, className, text) => {
     const node = document.createElement(tag);
@@ -21,11 +78,6 @@
     return "assets/images/bg1.jpg";
   };
 
-  const setText = (selector, value) => {
-    const node = document.querySelector(selector);
-    if (node) node.textContent = value || "";
-  };
-
   const makeImage = (source, alt, className) => {
     const image = element("img", className);
     image.src = imageSource(source);
@@ -33,31 +85,35 @@
     return image;
   };
 
-  const applyNavigation = (content) => {
+  const applyNavigation = (content, language) => {
+    const ui = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.en;
     const links = document.querySelectorAll("#site-navigation a");
     content.navigation.forEach((label, index) => {
       if (links[index]) links[index].textContent = label;
     });
     document.title = content.siteTitle || document.title;
-    document.querySelectorAll(".navbar-logo img, .footer-logo img").forEach((image) => {
+    document.querySelectorAll(".footer-logo img").forEach((image) => {
       image.src = imageSource(content.brandLogo);
     });
+    const navbarLogo = document.querySelector(".navbar-logo img");
+    if (navbarLogo) navbarLogo.alt = ui.logoAlt;
+    const brandWordmark = document.querySelector(".brand-wordmark");
+    if (brandWordmark) brandWordmark.textContent = ui.brandName;
   };
 
   const buildHero = (slides, language) => {
+    const ui = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.en;
     const section = element("section", "hero-slider");
     section.id = "home";
     section.dir = language === "ar" ? "rtl" : "ltr";
     section.setAttribute("aria-roledescription", "carousel");
-    section.setAttribute("aria-label", language === "ar" ? "مدار تك" : "Madar Tech");
+    section.setAttribute("aria-label", ui.brandName);
     const slideList = element("div", "hero-slides");
     slides.forEach((slide, index) => {
       const article = element("article", `hero-slide${index === 0 ? " is-active" : ""}`);
       article.setAttribute("role", "group");
       article.setAttribute("aria-roledescription", "slide");
-      article.setAttribute("aria-label", language === "ar"
-        ? `${index + 1} من ${slides.length}`
-        : `${index + 1} of ${slides.length}`);
+      article.setAttribute("aria-label", ui.slideOf(index + 1, slides.length));
       article.setAttribute("aria-hidden", String(index !== 0));
       article.inert = index !== 0;
       const image = makeImage(slide.image, "", "hero-slide-image");
@@ -66,6 +122,7 @@
       article.append(image);
 
       const copy = element("div", "hero-copy");
+      if (index === 0) copy.append(element("p", "hero-kicker", ui.heroKicker));
       const titleLines = String(slide.title || "").split("\n");
       const title = element(index === 0 ? "h1" : "h2", "hero-title");
       if (index === 0 && titleLines.length > 1) {
@@ -92,24 +149,24 @@
     const controls = element("div", "hero-controls");
     const previous = element("button", "hero-arrow hero-arrow-previous");
     previous.type = "button";
-    previous.setAttribute("aria-label", language === "ar" ? "الشريحة السابقة" : "Previous slide");
-    const previousIcon = element("i", "fa-solid fa-chevron-right");
+    previous.setAttribute("aria-label", ui.previousSlide);
+    const previousIcon = element("i", `fa-solid fa-chevron-${language === "ar" ? "right" : "left"}`);
     previousIcon.setAttribute("aria-hidden", "true");
     previous.append(previousIcon);
     const pagination = element("div", "hero-pagination");
     pagination.setAttribute("role", "group");
-    pagination.setAttribute("aria-label", language === "ar" ? "اختيار الشريحة" : "Choose a slide");
+    pagination.setAttribute("aria-label", ui.chooseSlide);
     slides.forEach((slide, index) => {
       const dot = element("button", `hero-dot${index === 0 ? " is-active" : ""}`);
       dot.type = "button";
-      dot.setAttribute("aria-label", language === "ar" ? `الشريحة ${index + 1}` : `Slide ${index + 1}`);
+      dot.setAttribute("aria-label", ui.slideLabel(index + 1));
       dot.setAttribute("aria-current", String(index === 0));
       pagination.append(dot);
     });
     const next = element("button", "hero-arrow hero-arrow-next");
     next.type = "button";
-    next.setAttribute("aria-label", language === "ar" ? "الشريحة التالية" : "Next slide");
-    const nextIcon = element("i", "fa-solid fa-chevron-left");
+    next.setAttribute("aria-label", ui.nextSlide);
+    const nextIcon = element("i", `fa-solid fa-chevron-${language === "ar" ? "left" : "right"}`);
     nextIcon.setAttribute("aria-hidden", "true");
     next.append(nextIcon);
     controls.append(previous, pagination, next);
@@ -126,7 +183,7 @@
   const buildAbout = (section) => {
     const node = element("section", "about");
     node.id = sectionId(section) || "about";
-    node.append(element("h1", "heading", section.title));
+    node.append(element("h2", "heading", section.title));
     const row = element("div", "row");
     const intro = element("div", "about-intro");
     intro.append(element("p", "", section.description));
@@ -153,7 +210,7 @@
   const buildServices = (section) => {
     const node = element("section", "Services");
     node.id = sectionId(section) || "services";
-    node.append(element("h1", "heading", section.title));
+    node.append(element("h2", "heading", section.title));
     const container = element("div", "container");
     const row = element("div", "row g-3");
     (section.items || []).forEach((item) => {
@@ -217,31 +274,33 @@
   };
 
   const buildContact = (section, language) => {
+    const ui = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.en;
     const node = element("section", "Contact Us");
     node.id = sectionId(section) || "contact";
     const container = element("div", "container");
     const row = element("div", "row contact-layout align-items-center");
     const imageColumn = element("div", "col-lg-6 contact-image-side");
-    imageColumn.append(makeImage(section.image, language === "ar" ? "تواصل مع مدار تك" : "Contact Madar Tech", ""));
+    imageColumn.append(makeImage(section.image, ui.contactAlt, ""));
     const formColumn = element("div", "col-lg-6 contact-form-side");
     const heading = element("div", "contact-heading");
     heading.append(element("h2", "", section.title), element("h4", "", section.subtitle), element("p", "", section.description));
     const form = element("form", "contact-form");
     [
-      { tag: "input", type: "text", placeholder: language === "ar" ? "الاسم" : "Name", required: true },
-      { tag: "input", type: "email", placeholder: language === "ar" ? "ادخل عنوان البريد الإلكتروني" : "Email address", required: true },
-      { tag: "input", type: "tel", placeholder: language === "ar" ? "ادخل رقم الهاتف" : "Phone number" },
-      { tag: "textarea", placeholder: language === "ar" ? "اكتب رسالتك هنا" : "Write your message here", required: true }
+      { tag: "input", type: "text", placeholder: ui.contactName, required: true },
+      { tag: "input", type: "email", placeholder: ui.contactEmail, required: true },
+      { tag: "input", type: "tel", placeholder: ui.contactPhone },
+      { tag: "textarea", placeholder: ui.contactMessage, required: true }
     ].forEach((definition) => {
       const group = element("div", "form-group");
       const control = element(definition.tag, definition.tag === "input" ? "form-control" : "");
       if (definition.type) control.type = definition.type;
       control.placeholder = definition.placeholder;
+      control.setAttribute("aria-label", definition.placeholder);
       if (definition.required) control.required = true;
       group.append(control);
       form.append(group);
     });
-    const submit = element("button", "btn contact-submit", language === "ar" ? "إرسال" : "Send");
+    const submit = element("button", "btn contact-submit", ui.send);
     submit.type = "submit";
     form.append(submit);
     formColumn.append(heading, form);
@@ -254,7 +313,7 @@
   const buildCustom = (section) => {
     const node = element("section", "about cms-custom-section");
     node.id = sectionId(section);
-    node.append(element("h1", "heading", section.title));
+    node.append(element("h2", "heading", section.title));
     const row = element("div", "row");
     const intro = element("div", "about-intro");
     intro.append(element("p", "", section.description));
@@ -273,23 +332,25 @@
   };
 
   const buildFooter = (footer, logo, language) => {
+    const ui = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.en;
     const node = element("footer", "footer");
     const container = element("div", "container");
     const content = element("div", "footer-content");
     const about = element("div", "footer-about");
     const logoBox = element("div", "footer-logo");
-    logoBox.append(makeImage(logo, language === "ar" ? "شعار مدار تك" : "Madar Tech logo", ""));
+    logoBox.append(makeImage(logo, ui.logoAlt, ""));
     const brandLink = element("a", "logo");
     brandLink.href = "#list";
-    brandLink.append(element("span", "", "مدار"), element("span", "", "تك"));
+    ui.brandParts.forEach((part) => brandLink.append(element("span", "", part)));
     about.append(logoBox, brandLink, element("p", "", footer.tagline));
 
     const links = element("div", "footer-links");
-    links.append(element("h3", "", language === "ar" ? "روابط التنقل" : "Quick links"));
+    links.append(element("h3", "", ui.quickLinks));
     (footer.links || []).forEach((item) => {
       const link = element("a");
       link.href = safeHref(item.href);
       link.title = item.label || "";
+      link.setAttribute("aria-label", item.label || "");
       const icon = element("i", item.icon || "fa-solid fa-link");
       icon.setAttribute("aria-hidden", "true");
       link.append(icon);
@@ -297,7 +358,7 @@
     });
 
     const social = element("div", "footer-social");
-    social.append(element("h3", "", language === "ar" ? "تابعنا" : "Follow us"));
+    social.append(element("h3", "", ui.followUs));
     const socials = element("div", "socials");
     (footer.socialLinks || []).forEach((item) => {
       const link = element("a");
@@ -324,24 +385,41 @@
   };
 
   const applyContent = (content, appearance, language, languages) => {
-    applyNavigation(content);
+    const ui = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.en;
+    applyNavigation(content, language);
     const root = document.documentElement;
     root.lang = language;
     root.dir = language === "ar" ? "rtl" : "ltr";
+    const description = document.querySelector('meta[name="description"]');
+    if (description && content.heroSlides[0]) {
+      description.content = content.heroSlides[0].description;
+    }
     root.style.setProperty("--oxford-blue", appearance.primaryColor);
     root.style.setProperty("--fresh-lime", appearance.accentColor);
     root.style.setProperty("--Light-blue", appearance.backgroundColor);
-    const languageSelect = document.querySelector("#site-language");
-    languageSelect.replaceChildren(...languages.map((code) => {
-      const option = element("option", "", code === "ar" ? "العربية" : code === "en" ? "English" : code);
-      option.value = code;
+    const languageToggle = document.querySelector("#site-language");
+    languageToggle.setAttribute("aria-label", ui.chooseLanguage);
+    const languageMenu = document.querySelector("#language-options");
+    languageMenu.replaceChildren(...languages.map((code) => {
+      const option = element("button", "language-option", ui.languageNames[code] || code);
+      option.type = "button";
+      option.dataset.language = code;
+      option.setAttribute("aria-current", String(code === language));
       return option;
     }));
-    languageSelect.value = language;
     const bookingLabel = document.querySelector(".btn-book-label");
-    if (bookingLabel) bookingLabel.textContent = language === "ar" ? "احجز الآن" : "Book now";
+    if (bookingLabel) bookingLabel.textContent = ui.bookNow;
     const menuToggle = document.querySelector(".menu-toggle");
-    if (menuToggle) menuToggle.setAttribute("aria-label", language === "ar" ? "فتح القائمة" : "Open menu");
+    if (menuToggle) {
+      menuToggle.setAttribute("aria-label", menuToggle.getAttribute("aria-expanded") === "true" ? ui.closeMenu : ui.openMenu);
+    }
+    const themeToggle = document.querySelector("#theme-toggle");
+    if (themeToggle) {
+      const isDark = document.documentElement.dataset.theme === "dark";
+      themeToggle.setAttribute("aria-label", isDark ? ui.switchToLight : ui.switchToDark);
+    }
+    const skipLink = document.querySelector(".skip-link");
+    if (skipLink) skipLink.textContent = ui.skipToContent;
 
     const main = document.querySelector("main");
     const sections = (content.sections || []).map((section) => {
@@ -363,13 +441,39 @@
   };
 
   const loadContent = async () => {
-    const languageSelect = document.querySelector("#site-language");
-    languageSelect.addEventListener("change", () => {
-      localStorage.setItem("madar-tech-site-language", languageSelect.value);
+    const languagePicker = document.querySelector("#language-picker");
+    const languageToggle = document.querySelector("#site-language");
+    const languageMenu = document.querySelector("#language-options");
+    const closeLanguageMenu = (restoreFocus = false) => {
+      languageMenu.hidden = true;
+      languageToggle.setAttribute("aria-expanded", "false");
+      if (restoreFocus) languageToggle.focus();
+    };
+
+    languageToggle.addEventListener("click", () => {
+      const shouldOpen = languageMenu.hidden;
+      languageMenu.hidden = !shouldOpen;
+      languageToggle.setAttribute("aria-expanded", String(shouldOpen));
+      if (shouldOpen) languageMenu.querySelector("button")?.focus();
+    });
+
+    languageMenu.addEventListener("click", (event) => {
+      const option = event.target.closest("[data-language]");
+      if (!option) return;
+      localStorage.setItem("madar-tech-site-language", option.dataset.language);
       const url = new URL(window.location.href);
-      url.searchParams.set("lang", languageSelect.value);
+      url.searchParams.set("lang", option.dataset.language);
       window.location.assign(url);
     });
+
+    document.addEventListener("click", (event) => {
+      if (!languagePicker.contains(event.target)) closeLanguageMenu();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !languageMenu.hidden) closeLanguageMenu(true);
+    });
+
     const isPreview = new URLSearchParams(window.location.search).has("preview");
     if (isPreview) {
       try {

@@ -3,13 +3,41 @@ const navigation = document.querySelector(".list");
 const siteHeader = document.querySelector(".site-header");
 const menuToggle = navigation.querySelector(".menu-toggle");
 const navigationLinks = navigation.querySelector("#site-navigation");
+const themeToggle = navigation.querySelector("#theme-toggle");
 const desktopNavigation = window.matchMedia("(min-width: 992px)");
 let highlightedLink = null;
+
+const getUiText = () => {
+  const dictionaries = window.madarUITranslations || {};
+  return dictionaries[document.documentElement.lang] || dictionaries.en || {};
+};
+
+const applyTheme = (theme) => {
+  const ui = getUiText();
+  const isDark = theme === "dark";
+  document.documentElement.dataset.theme = isDark ? "dark" : "light";
+  themeToggle.setAttribute("aria-pressed", String(isDark));
+  themeToggle.setAttribute("aria-label", isDark ? ui.switchToLight : ui.switchToDark);
+  themeToggle.querySelector("i").className = `fa-solid ${isDark ? "fa-sun" : "fa-moon"}`;
+};
+
+const storedTheme = localStorage.getItem("madar-tech-theme");
+const initialTheme = storedTheme === "light" || storedTheme === "dark"
+  ? storedTheme
+  : window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+applyTheme(initialTheme);
+
+themeToggle.addEventListener("click", () => {
+  const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  localStorage.setItem("madar-tech-theme", nextTheme);
+  applyTheme(nextTheme);
+});
 
 const setMenuOpen = (isOpen) => {
   navigationLinks.classList.toggle("active", isOpen);
   menuToggle.setAttribute("aria-expanded", String(isOpen));
-  menuToggle.setAttribute("aria-label", isOpen ? "إغلاق القائمة" : "فتح القائمة");
+  const ui = getUiText();
+  menuToggle.setAttribute("aria-label", isOpen ? ui.closeMenu : ui.openMenu);
 };
 
 const moveHighlight = (link) => {

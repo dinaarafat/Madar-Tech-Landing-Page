@@ -44,9 +44,10 @@ function escapeHtml(value) {
 
 function field(path, label, value, options = {}) {
   const id = `field-${path.replace(/[^a-zA-Z0-9_-]/g, "-")}`;
+  const direction = activeLanguage === "ar" ? "rtl" : "ltr";
   const control = options.textarea
-    ? `<textarea id="${id}" data-path="${escapeHtml(path)}"${options.rows ? ` rows="${options.rows}"` : ""}>${escapeHtml(value)}</textarea>`
-    : `<input id="${id}" data-path="${escapeHtml(path)}" type="${options.type || "text"}" value="${escapeHtml(value)}"${options.placeholder ? ` placeholder="${escapeHtml(options.placeholder)}"` : ""}>`;
+    ? `<textarea id="${id}" data-path="${escapeHtml(path)}" dir="${direction}"${options.rows ? ` rows="${options.rows}"` : ""}>${escapeHtml(value)}</textarea>`
+    : `<input id="${id}" data-path="${escapeHtml(path)}" type="${options.type || "text"}" value="${escapeHtml(value)}" dir="${direction}"${options.placeholder ? ` placeholder="${escapeHtml(options.placeholder)}"` : ""}>`;
   return `<div class="field${options.full ? " field-full" : ""}"><label for="${id}">${escapeHtml(label)}</label>${control}${options.hint ? `<small class="field-hint">${escapeHtml(options.hint)}</small>` : ""}</div>`;
 }
 

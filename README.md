@@ -1,6 +1,6 @@
 # Madar Tech Landing Page and CMS
 
-Arabic Madar Tech landing page with a local content-management dashboard.
+Arabic and English Madar Tech landing page with a local content-management dashboard.
 
 ## Run the site and dashboard
 
@@ -15,7 +15,8 @@ Open the landing page at `http://127.0.0.1:4173/` and the dashboard at `http://1
 ## Content and media
 
 - `dashboard/data/site-content.json` contains the published page content and the original Madar Tech colors.
-- The root content is Arabic; other languages live under `translations` (English is included). The website language selector switches between available translations, and the dashboard language selector chooses which translation to edit.
+- The root content is Arabic; other languages live under `translations` (English is included). Use the globe icon to choose a language and the sun/moon icon to switch themes. The theme follows the device preference until changed and is then saved in the browser.
+- The dashboard language selector chooses which translation to edit.
 - Colors are shared across languages. To add a language, add another locale entry under `translations` with the same content structure.
 - The dashboard previews drafts in the browser and publishes them to the shared JSON file.
 - Uploaded images are stored in `assets/images/`.
